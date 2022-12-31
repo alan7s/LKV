@@ -41,7 +41,7 @@ $(document).ready(function () {
 
         function loadVideo() {
             $.getJSON(URL, options, function (data) {
-                console.log(data);
+                //console.log(data);
                 var id = data.items[0].snippet.resourceId.videoId;
                 mainVideo(id);
                 resultsLoop(data);
