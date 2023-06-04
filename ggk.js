@@ -1,6 +1,7 @@
 $(document).ready(function () {
     var key = config.SECRET_KEY;
     var playlistId = 'UUS_hnpJLQTvBkqALgapi_4g'; //sbskpop
+    var videoslimit = 20;
     startLoad(playlistId);
 
     const today = new Date().toISOString().slice(0, 10);
@@ -8,19 +9,25 @@ $(document).ready(function () {
     $('#channel').change(function () {
         $('main').empty();
         playlistId = $(this).val();
-        if(playlistId == 'afreeca1' || playlistId == 'afreeca2'){
+        if (playlistId == 'afreeca1' || playlistId == 'afreeca2') {
             afreecaLoad(playlistId);
-        }else{
+        } else {
             startLoad(playlistId);
         }
     })
 
-    function afreecaLoad(playlistId){
-        if(playlistId == 'afreeca1'){
+    $('#maxvideos').change(function () {
+        $('main').empty();
+        videoslimit = $(this).val();
+        startLoad(playlistId);
+    })
+
+    function afreecaLoad(playlistId) {
+        if (playlistId == 'afreeca1') {
             $('#video').html(`
                 <iframe src="https://play.afreecatv.com/dkdleliii/244171684/embed" width="960" height="540" frameborder="0" allowfullscreen></iframe>
             `);
-        }else{
+        } else {
             $('#video').html(`
                 <iframe src="https://play.afreecatv.com/zesting/244133868/embed" width="960" height="540" frameborder="0" allowfullscreen></iframe>
             `);
@@ -29,11 +36,10 @@ $(document).ready(function () {
 
     function startLoad(playlistId) {
         var URL = 'https://www.googleapis.com/youtube/v3/playlistItems';
-
         var options = {
             part: 'snippet',
             key: key,
-            maxResults: 20,
+            maxResults: videoslimit,
             playlistId: playlistId
         }
 
@@ -70,7 +76,7 @@ $(document).ready(function () {
                         <img src="${thumb}" alt="thumbnail" class="thumb">
                         <div class="details">
                             <h4>${title}</h4>
-                            <p><i class="fa-solid fa-bolt" style="color: red;"></i> Published in ${published}</p>
+                            <p class="data"><time datetime="${published}"><i class="fa-solid fa-bolt" style="color: red;"></i> Published in ${published}</time></p>
                         </div>
                     </article>
                     `);
@@ -80,7 +86,7 @@ $(document).ready(function () {
                         <img src="${thumb}" alt="thumbnail" class="thumb">
                         <div class="details">
                             <h4>${title}</h4>
-                            <p><i class="fa-regular fa-clock"></i> Published in ${published}</p>
+                            <p class="data"><time datetime="${published}"><i class="fa-regular fa-clock"></i> Published in ${published}</time></p>
                         </div>
                     </article>
                     `);

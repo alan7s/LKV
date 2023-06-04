@@ -7,13 +7,14 @@
     <script src="ggk.js"></script>
     <!--<script src="getYTUploadPlaylistID.js"></script>-->
     <script src="config.js"></script>
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 </head>
 
 <body>
 
     <div class="container">
         <header>
-            <h1>GGK <i class="fa-solid fa-play"></i> Korea videos</h1>
+            <h1>Latest <i class="fa-solid fa-play"></i> Kpop videos</h1>
         </header>
         <section id="video">
         </section>
@@ -34,9 +35,21 @@
                 <option value="UUeLPm9yH_a_QH8n6445G-Ow">@KBSKpop</option>
                 <option value="UU5BMQOsAB8hKUyHu9KI6yig">@kbsworldtv</option>
             </select>
+            <label>channel</label>
+            <label>, showing latest</label>
+            <select id="maxvideos">
+                <option value=20>20</option>
+                <option value=30>30</option>
+                <option value=40>40</option>
+                <option value=50>50</option>
+            </select>
+            <label>videos.</label>
         </menu>
         <main>
         </main>
+        <footer>
+            <p>Desenvolvido por <a href="https://github.com/alan7s" class="footer-link">alan7s</a></p>
+        </footer>
     </div>
 </body>
 
