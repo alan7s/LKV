@@ -97,6 +97,10 @@ $(document).ready(function () {
         $('main').on('click', 'article', function () {
             var id = $(this).attr('data-key');
             mainVideo(id);
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth",
+            });
         });
     }
 });
